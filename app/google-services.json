@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "565288245453",
+    "project_id": "restoraunt-4ecb1",
+    "storage_bucket": "restoraunt-4ecb1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:565288245453:android:8e31cc9e707ee56bb9b184",
+        "android_client_info": {
+          "package_name": "ca.bcit.restoraunt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "565288245453-14bglnochh8fsd20fp1v59eh29c6j0hs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHiXX2R9WmLqGpcuxbpXITDls5Bty0UvI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "565288245453-14bglnochh8fsd20fp1v59eh29c6j0hs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
