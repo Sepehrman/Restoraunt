@@ -3,10 +3,13 @@ package ca.bcit.restoraunt;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -45,6 +48,11 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
 
         TextView textView = cardView.findViewById(R.id.restaurant_name);
         textView.setText(restaurants.get(position).getName());
+
+        ImageView imageView = cardView.findViewById(R.id.restaurant_img);
+        Picasso.with(cardView.getContext()).load(restaurants.get(position).getImgURL()).into(imageView);
+
+
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
