@@ -8,9 +8,11 @@ import android.widget.TextView;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+
 public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.ViewHolder>
 {
-    private final Restaurant[] restaurants;
+    private final ArrayList<Restaurant> restaurants;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final CardView cardView;
@@ -21,13 +23,13 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
         }
     }
 
-    public RestaurantAdapter(Restaurant[] restaurants) {
+    public RestaurantAdapter(ArrayList<Restaurant> restaurants) {
         this.restaurants = restaurants;
     }
 
     @Override
     public int getItemCount() {
-        return restaurants.length;
+        return restaurants.size();
     }
 
     @Override
@@ -42,12 +44,12 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
         final CardView cardView = holder.cardView;
 
         TextView textView = cardView.findViewById(R.id.restaurant_name);
-        textView.setText(restaurants[position].getName());
+        textView.setText(restaurants.get(position).getName());
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (listener != null) {
-                    listener.onClick(restaurants[position]);
+                    listener.onClick(restaurants.get(position));
                 }
             }
         });
