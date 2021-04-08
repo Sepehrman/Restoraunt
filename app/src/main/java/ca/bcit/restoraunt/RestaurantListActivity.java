@@ -22,7 +22,7 @@ public class RestaurantListActivity extends AppCompatActivity {
         restaurantRecycler = findViewById(R.id.restaurant_recycler);
         restaurants = Restaurant.getAllRestaurants();
 
-        StaggeredGridLayoutManager lm = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
+        StaggeredGridLayoutManager lm = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
         restaurantRecycler.setLayoutManager(lm);
     }
 

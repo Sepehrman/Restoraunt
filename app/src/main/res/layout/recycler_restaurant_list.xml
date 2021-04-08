@@ -18,7 +18,7 @@
             android:id="@+id/restaurant_img"
             android:layout_width="match_parent"
             android:layout_weight="1.0"
-            app:srcCompat="@drawable/resto"
+            app:srcCompat="@drawable/mcds"
             tools:layout_editor_absoluteX="-1dp"
             tools:layout_editor_absoluteY="2dp"
             android:layout_height="0dp" />
