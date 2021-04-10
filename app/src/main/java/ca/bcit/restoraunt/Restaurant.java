@@ -1,6 +1,8 @@
 package ca.bcit.restoraunt;
 
-public class Restaurant {
+import java.io.Serializable;
+
+public class Restaurant implements Serializable {
     private String name;
     private String address;
     private String imgURL;

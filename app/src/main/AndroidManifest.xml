@@ -9,9 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Restoraunt">
-        <activity android:name=".RestaurantListActivity"></activity>
+        <activity android:name=".RestaurantDetailActivity"></activity>
+<!--        <activity android:name=".RestaurantListActivity" />-->
         <activity android:name=".MainActivity" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".RestaurantListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,6 +20,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".SignupActivity" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
@@ -15,6 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class RestaurantListActivity extends AppCompatActivity {
@@ -34,6 +37,9 @@ public class RestaurantListActivity extends AppCompatActivity {
 
         StaggeredGridLayoutManager lm = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
         restaurantRecycler.setLayoutManager(lm);
+
+
+
     }
 
     @Override
@@ -50,6 +56,14 @@ public class RestaurantListActivity extends AppCompatActivity {
                 }
                 adapter = new RestaurantAdapter(restaurants);
                 restaurantRecycler.setAdapter(adapter);
+                adapter.setListener(new RestaurantAdapter.Listener() {
+                    @Override
+                    public void onClick(Restaurant foodName) {
+                        Intent i = new Intent(RestaurantListActivity.this, RestaurantDetailActivity.class);
+                        i.putExtra("items",(Serializable) foodName);
+                        startActivity(i);
+                    }
+                });
             }
 
             @Override
