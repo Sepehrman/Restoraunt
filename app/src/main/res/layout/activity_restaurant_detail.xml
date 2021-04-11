@@ -1,46 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="top|center"
     tools:context=".RestaurantDetailActivity">
 
     <ImageView
         android:id="@+id/restaurant_img_menu"
-        android:layout_width="496dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="88dp"
-        android:layout_marginBottom="25dp"
-        android:layout_weight="1.0"
-        app:layout_constraintBottom_toTopOf="@+id/locationButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         app:srcCompat="@drawable/mcds" />
 
     <TextView
         android:id="@+id/restaurantName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:fontFamily="@font/baloo_thambi"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toTopOf="@+id/restaurant_img_menu"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-    <Button
-        android:id="@+id/locationButton"
-        android:layout_width="wrap_content"
+        <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="342dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/restaurant_img_menu"/>
+        android:gravity="center|top">
+
+        <Button
+            android:id="@+id/locationButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/map_view" />
+
+        <Space
+            android:layout_width="20dp"
+            android:layout_height="match_parent"/>
+
+        <Button
+            android:id="@+id/addItemBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/plus" />
+        </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center|top">
+
+        <EditText
+            android:id="@+id/editTextMenuItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/menu_item" />
+
+        <Space
+            android:layout_width="20dp"
+            android:layout_height="match_parent"/>
+
+        <EditText
+            android:id="@+id/editTextMenuItemPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/price" />
+    </LinearLayout>
+
+<!--    <ListView-->
+<!--        android:id="@+id/lvFoodsPrice"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent" />-->
+
+</LinearLayout>
 
 <!--    android:onClick="displayRestaurantLocation"/>-->
-</androidx.constraintlayout.widget.ConstraintLayout>

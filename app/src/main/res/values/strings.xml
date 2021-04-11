@@ -9,5 +9,9 @@
     <string name="welcome_msg">Welcome to</string>
     <string name="create_new_account">Sign-up</string>
     <string name="title_activity_google_maps">Map</string>
+    <string name="plus">+</string>
     <string name="Location"></string>
+    <string name="menu_item">Menu Item</string>
+    <string name="price">$</string>
+    <string name="map_view">View On Map</string>
 </resources>
