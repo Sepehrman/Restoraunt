@@ -42,42 +42,6 @@ public class ShowMenuActivity extends AppCompatActivity {
         Restaurant restaurant = (Restaurant) getIntent().getSerializableExtra("items");
 
         menuDatabase = FirebaseDatabase.getInstance().getReference("Restaurants").child(restaurant.getName()).child("Menu");
-
-        //arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, arrayList);
-        //listView.setAdapter(arrayAdapter);
-        //TextView tex = findViewById(R.id.lvText);
-//        tex.setText(arr);
-
-        /**
-        menuDatabase.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                String value = snapshot.getValue(String.class);
-                arrayList.add(value);
-                arrayAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-         */
     }
 
     @Override
