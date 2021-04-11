@@ -33,11 +33,11 @@ public class RestaurantListActivity extends AppCompatActivity {
         //get database
         db = FirebaseDatabase.getInstance().getReference().child("Restaurants");
 
-        restaurantRecycler = findViewById(R.id.restaurant_recycler);
-
-        StaggeredGridLayoutManager lm = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
-
-        restaurantRecycler.setLayoutManager(lm);
+//        restaurantRecycler = findViewById(R.id.restaurant_recycler);
+//
+//        StaggeredGridLayoutManager lm = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
+//
+//        restaurantRecycler.setLayoutManager(lm);
 
     }
 
@@ -45,9 +45,15 @@ public class RestaurantListActivity extends AppCompatActivity {
     protected void onStart(){
         super.onStart();
         //Grab restaurants from database
+
         db.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                restaurantRecycler = findViewById(R.id.restaurant_recycler);
+
+                StaggeredGridLayoutManager lm = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
+
+                restaurantRecycler.setLayoutManager(lm);
                 restaurants.clear();
                 for (DataSnapshot postSnapshot: snapshot.getChildren()) {
                     Restaurant r = postSnapshot.getValue(Restaurant.class);
