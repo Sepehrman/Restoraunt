@@ -28,8 +28,7 @@ public class RestaurantDetailActivity extends AppCompatActivity {
     DatabaseReference restaurantItemsDB;
 
     Restaurant restaurant;
-    String itemName;
-    String itemPrice;
+
 
 
     @Override
@@ -37,19 +36,29 @@ public class RestaurantDetailActivity extends AppCompatActivity {
 
         restaurantItemsDB = FirebaseDatabase.getInstance().getReference("Restaurants");
 
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_detail);
+
+
         displayRestaurantDetails();
         Button locationButton = findViewById(R.id.locationButton);
         Button addItemBtn = findViewById(R.id.addItemBtn);
+        Button listViewBtn = findViewById(R.id.listViewAct);
 
-        Spinner spinner = (Spinner) findViewById(R.id.spinnerMenu);
+
+                Spinner spinner = (Spinner) findViewById(R.id.spinnerMenu);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.menu_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
+
+        listViewBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(RestaurantDetailActivity.this, ShowMenuActivity.class));
+            }
+        });
 
         addItemBtn.setOnClickListener(new View.OnClickListener() {
             @Override
