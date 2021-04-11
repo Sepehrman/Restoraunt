@@ -79,25 +79,11 @@
         android:layout_height="wrap_content"
         android:gravity="center|top">
 
-    <Spinner
-        android:id="@+id/spinnerMenu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textAlignment="center"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center|top">
-
         <Button
             android:id="@+id/listViewAct"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="@string/show_menu"/>
 
 
     </LinearLayout>

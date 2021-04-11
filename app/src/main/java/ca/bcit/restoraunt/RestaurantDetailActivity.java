@@ -46,12 +46,6 @@ public class RestaurantDetailActivity extends AppCompatActivity {
         Button listViewBtn = findViewById(R.id.listViewAct);
 
 
-                Spinner spinner = (Spinner) findViewById(R.id.spinnerMenu);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.menu_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-
 
         listViewBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,14 +87,12 @@ public class RestaurantDetailActivity extends AppCompatActivity {
 
     private void addMenuItem() {
 
-        Spinner categoryChoiceSpin = (Spinner) findViewById(R.id.spinnerMenu);
-        String spinnerMenu = categoryChoiceSpin.getSelectedItem().toString();
         restaurant = (Restaurant) getIntent().getSerializableExtra("items");
 
         EditText editTextMenuItemName = findViewById(R.id.editTextMenuItem);
         EditText editTextMenuItemPrice = findViewById(R.id.editTextMenuItemPrice);
         String foodName = editTextMenuItemName.getText().toString().trim();
-        String foodPrice = editTextMenuItemPrice.getText().toString().trim();
+        String foodPrice = '$' + editTextMenuItemPrice.getText().toString().trim();
 
 
 //
@@ -121,7 +113,7 @@ public class RestaurantDetailActivity extends AppCompatActivity {
 
         String id = restaurantItemsDB.push().getKey();
         Task setTaskRestaurant = restaurantItemsDB.child(currentRestaurantName).child("Menu").
-                child(spinnerMenu).child(foodName).setValue(foodObj);
+                child(foodName).setValue(foodObj);
 
 
         //
