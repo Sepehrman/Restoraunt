@@ -87,9 +87,11 @@ public class RestaurantDetailActivity extends AppCompatActivity {
             return;
         }
 
-        String currentRestaurantName = restaurantItemsDB.push().getKey();
-        
+//        String currentRestaurantName = restaurantItemsDB.push().getKey();
+        String currentRestaurantName = restaurant.getName();
+
         Task setTaskRestaurant = restaurantItemsDB.child(currentRestaurantName).setValue(itemName, itemPrice);
+
 
         setTaskRestaurant.addOnSuccessListener(new OnSuccessListener() {
             @Override
