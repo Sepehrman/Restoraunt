@@ -13,5 +13,12 @@
     <string name="Location"></string>
     <string name="menu_item">Menu Item</string>
     <string name="price">$</string>
-    <string name="map_view">View On Map</string>
+    <string name="map_view">Location</string>
+
+    <string-array name="menu_array">
+        <item>Starters</item>
+        <item>Entrees</item>
+        <item>Dessert</item>
+    </string-array>
+
 </resources>

@@ -7,9 +7,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,23 +26,30 @@ public class RestaurantDetailActivity extends AppCompatActivity {
 
 
     DatabaseReference restaurantItemsDB;
-    EditText editTextMenuItemName;
-    EditText editTextMenuItemPrice;
+
     Restaurant restaurant;
+    String itemName;
+    String itemPrice;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         restaurantItemsDB = FirebaseDatabase.getInstance().getReference("Restaurants");
-        editTextMenuItemName = findViewById(R.id.editTextMenuItem);
-        editTextMenuItemPrice = findViewById(R.id.editTextMenuItemPrice);
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_detail);
         displayRestaurantDetails();
         Button locationButton = findViewById(R.id.locationButton);
         Button addItemBtn = findViewById(R.id.addItemBtn);
+
+        Spinner spinner = (Spinner) findViewById(R.id.spinnerMenu);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.menu_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
 
         addItemBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,43 +83,54 @@ public class RestaurantDetailActivity extends AppCompatActivity {
     }
 
     private void addMenuItem() {
-        String itemName = editTextMenuItemName.getText().toString().trim();
-        String itemPrice = "$" + editTextMenuItemPrice.getText().toString().trim();
 
-        if (TextUtils.isEmpty(itemName)) {
+        Spinner categoryChoiceSpin = (Spinner) findViewById(R.id.spinnerMenu);
+        String spinnerMenu = categoryChoiceSpin.getSelectedItem().toString();
+        restaurant = (Restaurant) getIntent().getSerializableExtra("items");
+
+        EditText editTextMenuItemName = findViewById(R.id.editTextMenuItem);
+        EditText editTextMenuItemPrice = findViewById(R.id.editTextMenuItemPrice);
+        String foodName = editTextMenuItemName.getText().toString().trim();
+        String foodPrice = editTextMenuItemPrice.getText().toString().trim();
+
+
+//
+        if (TextUtils.isEmpty(foodName)) {
             Toast.makeText(this, "You must enter a Menu item's name", Toast.LENGTH_LONG).show();
             return;
         }
 
-        if (TextUtils.isEmpty(itemPrice)) {
+        if (TextUtils.isEmpty(foodPrice)) {
             Toast.makeText(this, "You must enter a Menu item's pricing.", Toast.LENGTH_LONG).show();
             return;
         }
 
-//        String currentRestaurantName = restaurantItemsDB.push().getKey();
         String currentRestaurantName = restaurant.getName();
+////        String currentRestaurantName = restaurant.getName();
+//
+        Food foodObj = new Food(foodName, foodPrice);
 
-        Task setTaskRestaurant = restaurantItemsDB.child(currentRestaurantName).setValue(itemName, itemPrice);
+        String id = restaurantItemsDB.push().getKey();
+        Task setTaskRestaurant = restaurantItemsDB.child(currentRestaurantName).child("Menu").
+                child(spinnerMenu).child(foodName).setValue(foodObj);
 
 
-        setTaskRestaurant.addOnSuccessListener(new OnSuccessListener() {
-            @Override
-            public void onSuccess(Object o) {
-                Toast.makeText(RestaurantDetailActivity.this,"Item and pricing added.",Toast.LENGTH_LONG).show();
+        //
+        setTaskRestaurant.addOnSuccessListener(o -> {
+            Toast.makeText(RestaurantDetailActivity.this,"Item and pricing added.",Toast.LENGTH_LONG).show();
 
-                editTextMenuItemName.setText("");
-                editTextMenuItemPrice.setText("");
-            }
+            editTextMenuItemName.setText("");
+            editTextMenuItemPrice.setText("");
         });
-
-        setTaskRestaurant.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(RestaurantDetailActivity.this,
-                        "something went wrong.\n" + e.toString(),
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
+//
+//        setTaskRestaurant.addOnFailureListener(new OnFailureListener() {
+//            @Override
+//            public void onFailure(@NonNull Exception e) {
+//                Toast.makeText(RestaurantDetailActivity.this,
+//                        "something went wrong.\n" + e.toString(),
+//                        Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 }
 

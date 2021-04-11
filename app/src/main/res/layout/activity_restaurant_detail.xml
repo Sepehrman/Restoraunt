@@ -11,7 +11,8 @@
     <ImageView
         android:id="@+id/restaurant_img_menu"
         android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_height="200dp"
+        android:layout_gravity="top|center"
         app:srcCompat="@drawable/mcds" />
 
     <TextView
@@ -19,6 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/baloo_thambi"
+        android:gravity="center|top"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <LinearLayout
@@ -54,7 +56,9 @@
             android:id="@+id/editTextMenuItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/menu_item" />
+            android:hint="@string/menu_item"
+            android:autofillHints=""
+            android:inputType="" />
 
         <Space
             android:layout_width="20dp"
@@ -64,14 +68,25 @@
             android:id="@+id/editTextMenuItemPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/price" />
+            android:hint="@string/price"
+            android:autofillHints=""
+            android:inputType="" />
     </LinearLayout>
 
-<!--    <ListView-->
-<!--        android:id="@+id/lvFoodsPrice"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent" />-->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center|top">
+
+    <Spinner
+        android:id="@+id/spinnerMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textAlignment="center"/>
+
+    </LinearLayout>
 
 </LinearLayout>
 
-<!--    android:onClick="displayRestaurantLocation"/>-->
