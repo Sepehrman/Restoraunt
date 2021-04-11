@@ -29,7 +29,7 @@ public class ViewMenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_menu);
 
         foods = new ArrayList<Food>();
-        listViewFoods = findViewById(R.id.lvFoods);
+        //listViewFoods = findViewById(R.id.lvFoods);
     }
 
     @Override

@@ -10,6 +10,22 @@ public class Food {
         this.foodPrice = foodPrice;
     }
 
+    public Food(){
+
+    }
+
+    public void setFoodName(String foodName) {
+        this.foodName = foodName;
+    }
+
+    public void setFoodPrice(String foodPrice) {
+        this.foodPrice = foodPrice;
+    }
+
+    @Override
+    public String toString() {
+        return "" + this.foodName + this.foodPrice;
+    }
 
     public String getFoodName() {
         return foodName;

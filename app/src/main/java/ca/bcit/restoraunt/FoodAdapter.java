@@ -13,9 +13,9 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.ViewHolder>
+public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder>
 {
-    private final ArrayList<Restaurant> restaurants;
+    private final ArrayList<Food> foodList;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final CardView cardView;
@@ -26,19 +26,19 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
         }
     }
 
-    public RestaurantAdapter(ArrayList<Restaurant> restaurants) {
-        this.restaurants = restaurants;
+    public FoodAdapter(ArrayList<Food> foodList) {
+        this.foodList = foodList;
     }
 
     @Override
     public int getItemCount() {
-        return restaurants.size();
+        return foodList.size();
     }
 
     @Override
-    public RestaurantAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public FoodAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         CardView cv = (CardView) LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.recycler_restaurant_list, parent, false);
+                .inflate(R.layout.recycler_menu_list, parent, false);
         return new ViewHolder(cv);
     }
 
@@ -46,22 +46,10 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
     public void onBindViewHolder(ViewHolder holder, final int position) {
         final CardView cardView = holder.cardView;
 
-        TextView textView = cardView.findViewById(R.id.restaurant_name);
-        textView.setText(restaurants.get(position).getName());
-
-        ImageView imageView = cardView.findViewById(R.id.restaurant_img);
-        Picasso.with(cardView.getContext()).load(restaurants.get(position).getImgURL()).into(imageView);
-
-
-        cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (listener != null) {
-                    listener.onClick(restaurants.get(position));
-                }
-            }
-        });
-
+        TextView textView = cardView.findViewById(R.id.food_name);
+        textView.setText(foodList.get(position).getFoodName());
+        TextView textView2 = cardView.findViewById(R.id.food_price);
+        textView2.setText(foodList.get(position).getFoodPrice());
 
     }
 

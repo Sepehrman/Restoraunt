@@ -50,7 +50,10 @@ public class RestaurantDetailActivity extends AppCompatActivity {
         listViewBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(RestaurantDetailActivity.this, ShowMenuActivity.class));
+                Intent i = new Intent(RestaurantDetailActivity.this, ShowMenuActivity.class);
+                Bundle bundle = getIntent().getExtras();
+                i.putExtras(bundle);
+                startActivity(i);
             }
         });
 
