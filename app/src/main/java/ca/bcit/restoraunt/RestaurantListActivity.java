@@ -36,9 +36,8 @@ public class RestaurantListActivity extends AppCompatActivity {
         restaurantRecycler = findViewById(R.id.restaurant_recycler);
 
         StaggeredGridLayoutManager lm = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
+
         restaurantRecycler.setLayoutManager(lm);
-
-
 
     }
 
@@ -49,7 +48,7 @@ public class RestaurantListActivity extends AppCompatActivity {
         db.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //restaurants.clear();
+                restaurants.clear();
                 for (DataSnapshot postSnapshot: snapshot.getChildren()) {
                     Restaurant r = postSnapshot.getValue(Restaurant.class);
                     restaurants.add(r);
